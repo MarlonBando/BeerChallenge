@@ -4,10 +4,21 @@ body{
     background-color:#714a41;
 }
 
+.navBar{
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    background-color: aliceblue;
+}
+
+.bestPanel{
+    border-radius: 25px;
+    background-color: aliceblue;
+}
+
 .loginPanel{
     margin-top: 10%;
     margin-left: 15%;
     margin-right: 15%;
     background-color: aliceblue;
-    border-radius: 6%;
+    border-radius: 25px;
 }
