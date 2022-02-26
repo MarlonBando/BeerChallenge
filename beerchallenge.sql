@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Feb 26, 2022 alle 13:53
+-- Creato il: Feb 26, 2022 alle 17:41
 -- Versione del server: 10.4.22-MariaDB
--- Versione PHP: 8.1.0
+-- Versione PHP: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,7 +40,25 @@ CREATE TABLE `beer` (
 --
 
 INSERT INTO `beer` (`id`, `name`, `alcoholContent`, `idType`, `idBrewery`) VALUES
-(1, 'Rebe', 5, 1, 2);
+(1, 'Rebe', 5, 1, 2),
+(2, 'la bionda', 3.2, 1, 2),
+(3, 'dragone biondo', 4.1, 2, 2),
+(4, 'Inferno rosso', 5.6, 8, 1),
+(5, 'Marylin Morrow', 3.2, 4, 2),
+(6, 'Paint it Black', 5.6, 10, 2),
+(7, 'Blody Mery', 7, 8, 2),
+(8, 'I 5 Luppoli', 4.5, 3, 1),
+(9, 'Nastro Azzurro', 4, 2, 1),
+(10, 'La castagna', 7, 10, 1),
+(11, 'Guinness', 6, 11, 1),
+(12, 'L ambrata', 5, 7, 1),
+(13, 'Il baffo rosso', 6, 8, 1),
+(14, 'Sole', 3.2, 1, 3),
+(15, 'Home', 4.1, 2, 3),
+(16, 'Alice in the wonderland', 5.6, 8, 3),
+(17, 'Banana soul', 3.2, 4, 3),
+(18, 'Coffe paradise', 5.6, 10, 3),
+(19, 'Sium', 7, 8, 3);
 
 -- --------------------------------------------------------
 
@@ -141,7 +159,25 @@ CREATE TABLE `registration` (
 --
 
 INSERT INTO `registration` (`id`, `idCompetition`, `idBeer`, `date`) VALUES
-(1, 1, 1, '2016-01-10');
+(1, 1, 1, '2016-01-10'),
+(2, 1, 1, '2016-01-01'),
+(3, 1, 4, '2016-01-01'),
+(4, 1, 8, '2016-01-01'),
+(5, 2, 2, '2017-01-01'),
+(6, 2, 19, '2017-01-01'),
+(7, 2, 12, '2017-01-01'),
+(8, 3, 5, '2018-01-01'),
+(9, 3, 17, '2018-01-01'),
+(10, 3, 11, '2018-01-01'),
+(11, 4, 3, '2019-01-01'),
+(12, 4, 9, '2019-01-01'),
+(13, 4, 16, '2019-01-01'),
+(14, 5, 6, '2020-01-01'),
+(15, 5, 7, '2020-01-01'),
+(16, 5, 14, '2020-01-01'),
+(17, 6, 10, '2021-01-01'),
+(18, 6, 13, '2021-01-01'),
+(19, 6, 18, '2021-01-01');
 
 -- --------------------------------------------------------
 
@@ -154,6 +190,30 @@ CREATE TABLE `result` (
   `position` int(11) NOT NULL,
   `idRegistration` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `result`
+--
+
+INSERT INTO `result` (`id`, `position`, `idRegistration`) VALUES
+(1, 1, 1),
+(2, 2, 2),
+(3, 3, 3),
+(4, 3, 4),
+(5, 2, 5),
+(6, 1, 6),
+(7, 2, 7),
+(8, 1, 8),
+(9, 3, 9),
+(10, 1, 10),
+(11, 3, 11),
+(12, 2, 12),
+(13, 2, 13),
+(14, 1, 14),
+(15, 3, 15),
+(16, 1, 16),
+(17, 2, 17),
+(18, 3, 18);
 
 --
 -- Indici per le tabelle scaricate
@@ -208,7 +268,7 @@ ALTER TABLE `result`
 -- AUTO_INCREMENT per la tabella `beer`
 --
 ALTER TABLE `beer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT per la tabella `beertype`
@@ -232,13 +292,13 @@ ALTER TABLE `competition`
 -- AUTO_INCREMENT per la tabella `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT per la tabella `result`
 --
 ALTER TABLE `result`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Limiti per le tabelle scaricate

@@ -1,3 +1,7 @@
+<?php
+  include_once 'connection.php';
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -16,7 +20,26 @@
         </div>
         <div class="bestPanel column text-center p-5 m-5">
             <h1>Best Brewery</h1>
-            <h3>Dolce Mosto</h3>
+            <?php
+              $query = "SELECT brewery.name,COUNT(brewery.id) AS N_victory FROM result 
+                        JOIN registration ON registration.id = result.idRegistration
+                        JOIN beer ON beer.id = registration.idBeer
+                        JOIN brewery ON brewery.id = beer.idBrewery
+                        WHERE result.position = 1
+                        GROUP BY brewery.id
+                        HAVING N_victory >= ALL(SELECT COUNT(brewery.id) AS N_victory FROM result 
+                        JOIN registration ON registration.id = result.idRegistration
+                        JOIN beer ON beer.id = registration.idBeer
+                        JOIN brewery ON brewery.id = beer.idBrewery
+                        WHERE result.position = 1
+                        GROUP BY brewery.id)";
+              $result = mysqli_query($conn,$query);
+              if(mysqli_num_rows($result) > 0){
+                while($row = mysqli_fetch_assoc($result)){
+                    echo "<h1>" . $row['name'] . "</h1>";
+                }
+              }
+            ?>
         </div>
         <div class="row justify-content-center p-5">
             <table class="table table-light">
