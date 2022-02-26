@@ -1,0 +1,13 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color:#714a41;
+}
+
+.loginPanel{
+    margin-top: 10%;
+    margin-left: 15%;
+    margin-right: 15%;
+    background-color: aliceblue;
+    border-radius: 6%;
+}
