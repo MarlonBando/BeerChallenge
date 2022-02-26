@@ -16,7 +16,7 @@
   </head>
   <body>
       <div class="container">
-        <div class="navBar row justify-content-center bg-light"><img src="beerChallengeLogo.png">
+        <div class="navBar row justify-content-center bg-light"><img class="p-4" src="beerChallengeLogo.png">
         </div>
         <div class="bestPanel column text-center p-5 m-5">
             <h1>Best Brewery</h1>
@@ -36,9 +36,10 @@
               $result = mysqli_query($conn,$query);
               if(mysqli_num_rows($result) > 0){
                 while($row = mysqli_fetch_assoc($result)){
-                    echo "<h1>" . $row['name'] . "</h1>";
+                    echo "<h3>" . $row['name'] . "</h3>";
                 }
               }
+              mysqli_free_result($result);
             ?>
         </div>
         <div class="row justify-content-center p-5">
@@ -50,6 +51,26 @@
                         <th>Action</th>
                     </tr>
                 </thead>
+                <?php
+                  $query = "SELECT name,date,deadline FROM competition ORDER BY date DESC";
+                  $result = mysqli_query($conn,$query);
+                  if(mysqli_num_rows($result)>0){
+                    while($row = mysqli_fetch_assoc($result)){
+                      echo "<tr>";
+                      echo "<td>" . $row['name'] . "</td>";
+                      echo "<td>" . $row['date'] . "</td>";
+                      echo "<td><a href=\"#\"><img src=\"podium.png\"></a>";
+                      $deadline = new DateTime($row['deadline']);
+                      $thisDate = new DateTime();
+                      if($deadline < $thisDate){
+                        echo "<img src=\"registration_red.png\"></td>";
+                      }else{
+                        echo "<a href=\"#\"><img src=\"registration.png\"></a></td>";
+                      }
+                      echo "</tr>";
+                    }
+                  }
+                ?>
             </table>
         </div>
       </div>
