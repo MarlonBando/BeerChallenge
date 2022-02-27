@@ -52,14 +52,14 @@
                     </tr>
                 </thead>
                 <?php
-                  $query = "SELECT name,date,deadline FROM competition ORDER BY date DESC";
+                  $query = "SELECT id,name,date,deadline FROM competition ORDER BY date DESC";
                   $result = mysqli_query($conn,$query);
                   if(mysqli_num_rows($result)>0){
                     while($row = mysqli_fetch_assoc($result)){
                       echo "<tr>";
                       echo "<td>" . $row['name'] . "</td>";
                       echo "<td>" . $row['date'] . "</td>";
-                      echo "<td><a href=\"#\"><img src=\"podium.png\"></a>";
+                      echo "<td><a href=\"graduatory.php?idCompetition=". $row['id'] ."\"><img src=\"podium.png\"></a>";
                       $deadline = new DateTime($row['deadline']);
                       $thisDate = new DateTime();
                       if($deadline < $thisDate){
