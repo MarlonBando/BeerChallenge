@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Feb 26, 2022 alle 17:41
+-- Creato il: Feb 28, 2022 alle 21:45
 -- Versione del server: 10.4.22-MariaDB
--- Versione PHP: 8.1.2
+-- Versione PHP: 8.1.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -58,7 +58,10 @@ INSERT INTO `beer` (`id`, `name`, `alcoholContent`, `idType`, `idBrewery`) VALUE
 (16, 'Alice in the wonderland', 5.6, 8, 3),
 (17, 'Banana soul', 3.2, 4, 3),
 (18, 'Coffe paradise', 5.6, 10, 3),
-(19, 'Sium', 7, 8, 3);
+(19, 'Sium', 7, 8, 3),
+(22, 'Señoripa', 6, 6, 5),
+(27, 'Pilotta', 8.5, 10, 5),
+(28, 'Red Blues', 6.5, 8, 9);
 
 -- --------------------------------------------------------
 
@@ -112,7 +115,9 @@ INSERT INTO `brewery` (`id`, `name`, `address`, `email`, `password`, `link`) VAL
 (1, 'a', 'via garibaldi 21', 'a@a.a', 'a', 'a.it'),
 (2, 'Mosto Dolce', 'Via Nazionale 114/R Firenze', 'mostodolce@gmail.com', 'mostodolce', 'https://www.mostodolce.it/%27'),
 (3, 'MadOne', 'Via Beduschi 45 Casalmaggiore', 'madone@gmail.com', 'madone', 'https://mad-one.it/%27'),
-(4, 'Birrificio Lambrate', 'Via benedetto 22 Lambrate', 'birrificiolambrate@gmail.com', 'birrificiolambrate', 'https://www.lenius.it/birra-artigianale-a-milano-top-5/%27');
+(4, 'Birrificio Lambrate', 'Via benedetto 22 Lambrate', 'birrificiolambrate@gmail.com', 'birrificiolambrate', 'https://www.lenius.it/birra-artigianale-a-milano-top-5/%27'),
+(5, 'Birrificio Gregorio', 'Via Reggio 14 Parma PR', 'birrificio.gregorio@gmail.com', 'birrificiogregorio', 'https://www.birrificiogregorio.it/'),
+(9, 'Birrificio Argo', 'Via Giuseppe di Vittorio  78/a Lemignano PR', 'birrificioargo@gmail.com', 'birrificioargo', 'https://birrificioargo.com/');
 
 -- --------------------------------------------------------
 
@@ -177,7 +182,9 @@ INSERT INTO `registration` (`id`, `idCompetition`, `idBeer`, `date`) VALUES
 (16, 5, 14, '2020-01-01'),
 (17, 6, 10, '2021-01-01'),
 (18, 6, 13, '2021-01-01'),
-(19, 6, 18, '2021-01-01');
+(19, 6, 18, '2021-01-01'),
+(20, 7, 22, '2022-02-28'),
+(26, 7, 28, '2022-02-28');
 
 -- --------------------------------------------------------
 
@@ -201,19 +208,20 @@ INSERT INTO `result` (`id`, `position`, `idRegistration`) VALUES
 (3, 3, 3),
 (4, 3, 4),
 (5, 2, 5),
-(6, 1, 6),
+(6, 2, 6),
 (7, 2, 7),
-(8, 1, 8),
+(8, 2, 8),
 (9, 3, 9),
 (10, 1, 10),
 (11, 3, 11),
-(12, 2, 12),
+(12, 1, 12),
 (13, 2, 13),
 (14, 1, 14),
 (15, 3, 15),
 (16, 1, 16),
 (17, 2, 17),
-(18, 3, 18);
+(18, 3, 18),
+(19, 1, 19);
 
 --
 -- Indici per le tabelle scaricate
@@ -268,7 +276,7 @@ ALTER TABLE `result`
 -- AUTO_INCREMENT per la tabella `beer`
 --
 ALTER TABLE `beer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT per la tabella `beertype`
@@ -280,7 +288,7 @@ ALTER TABLE `beertype`
 -- AUTO_INCREMENT per la tabella `brewery`
 --
 ALTER TABLE `brewery`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT per la tabella `competition`
@@ -292,13 +300,13 @@ ALTER TABLE `competition`
 -- AUTO_INCREMENT per la tabella `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT per la tabella `result`
 --
 ALTER TABLE `result`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Limiti per le tabelle scaricate
