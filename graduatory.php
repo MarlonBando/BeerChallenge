@@ -1,6 +1,6 @@
 <?php
   include_once 'connection.php';
-  $idCompetition = $_GET['idCompetition']
+  $idCompetition = $_GET['idCompetition'];
 ?>
 
 <!doctype html>
@@ -29,7 +29,7 @@
                     </tr>
                 </thead>
                 <?php
-                  $query = "SELECT beer.name AS beerName,brewery.name AS breweryName,result.position FROM competition
+                  $query = "SELECT beer.name AS beerName, brewery.name AS breweryName, result.position FROM competition
                             JOIN registration ON competition.id = registration.idCompetition
                             JOIN result ON registration.id = result.idRegistration
                             JOIN beer ON registration.idBeer = beer.id

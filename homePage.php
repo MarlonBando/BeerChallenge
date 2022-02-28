@@ -1,5 +1,6 @@
 <?php
   include_once 'connection.php';
+  $idBrewery = $_GET['idBrewery'];
 ?>
 
 <!doctype html>
@@ -65,7 +66,10 @@
                       if($deadline < $thisDate){
                         echo "<img src=\"registration_red.png\"></td>";
                       }else{
-                        echo "<a href=\"#\"><img src=\"registration.png\"></a></td>";
+                        $vars = array('idCompetition' => $row['id'], 'idBrewery' => $idBrewery);
+                        $querystring = http_build_query($vars);
+                        $url = "registration.php?" . $querystring;
+                        echo "<a href=". $url ."><img src=\"registration.png\"></a></td>";
                       }
                       echo "</tr>";
                     }

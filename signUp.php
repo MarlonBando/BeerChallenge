@@ -1,3 +1,7 @@
+<?php
+  include_once 'connection.php';
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -13,21 +17,32 @@
   <body>
       <div class="container">
           <div class="loginPanel pb-5 text-center">
-            <form action="?" method="post" name="registration" id="registration" style="max-width:600px;margin:auto;">
+            <form method="post" name="registration" style="max-width:600px;margin:auto;">
               <img src="beerChallengeLogo.png" height="200" alt="BeerChallenge Logo">
               <h1 class="h2 mb-3 font-weight-normal">Registration</h1>
-                <label for="nameBrewery" class="sr-only">Name Brewery</label>
-                <input type="text" id="nameBrewery" class="form-control mb-1" placeholder="Name Brewery" required autofocus>
-                <label for="nameOwner" class="sr-only">Name Owner</label>
-                <input type="text" id="nameOwner" class="form-control mb-1" placeholder="Name Owner" required autofocus>
-                <label for="address" class="sr-only">Address</label>
-                <input type="text" id="address" class="form-control mb-3" placeholder="Address" required autofocus>
-                <h2 class="h6 mb-1 font-weight-normal">This will be used as credentials</h2>
-                <label for="emailAddress" class="sr-only">Email Address</label>
-                <input type="text" id="emailAddress" class="form-control mb-1" placeholder="Email Address" required autofocus>
-                <label for="emailAddress" class="sr-only">Email Address</label>
-                <input type="password" id="password" class="form-control mb-3" placeholder="Password" required autofocus>
-                <input class="btn btn-dark btn-lg btn-block" type="submit" value="Sign Up">
+              <input type="text" name="nameBrewery" class="form-control mb-1" placeholder="Name Brewery" required autofocus>
+              <input type="text" name="address" class="form-control mb-1" placeholder="Address" required autofocus>
+              <input type="text" name="website" class="form-control mb-3" placeholder="Web site" required autofocus>
+              <h2 class="h6 mb-1 font-weight-normal">This will be used as credentials</h2>
+              <input type="text" name="emailAddress" class="form-control mb-1" placeholder="Email Address" required autofocus>
+              <input type="password" name="password" class="form-control mb-3" placeholder="Password" required autofocus>
+              <input class="btn btn-dark btn-lg btn-block mb-5" type="submit" name="signUp" value="Sign Up">
+              <?php
+              if(isset($_POST['signUp'])){
+                $nameBrewery = $_POST['nameBrewery'];
+                $website = $_POST['website'];
+                $address = $_POST['address'];
+                $emailAddress = $_POST['emailAddress'];
+                $password = $_POST['password'];
+                $query = "INSERT INTO brewery (name, address, email, password, link) VALUES ('$nameBrewery', '$address', '$emailAddress', '$password', '$website')";
+                if(mysqli_query($conn,$query)){
+                  echo "<div bestPanel column text-center p-5 m-5> <h1 h6 mb-1 font-weight-normal> Successfully registered! </h1></div> <div bestPanel column text-center p-5 m-5> <a href=\"index.php\"> Go to login page </a></div>";
+                }
+                else{
+                  echo "<script> alert(\"Somethings goes wrong during registration\")</script>";
+                }
+              }
+              ?>
             </form>
             
           </div>
