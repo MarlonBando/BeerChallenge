@@ -25,9 +25,8 @@
                 <input type="text" name="nameBeer" class="form-control mb-1" placeholder="Beer Name" required autofocus>
                 <input type="text" name="alcohol" class="form-control mb-3" placeholder="Alcohol Rate" required autofocus>
                 <h5>
-                    Beer Type : 
-                    <span>
-                        <select name="beerType" class="mb-3">
+                    <span>Beer Type :
+                        <select name="beerType" class="form-control mt-2 mb-3">
                             <option value="">--Please choose an option--</option>
                             <option value="1">Blanche</option>
                             <option value="2">Weiss</option>
@@ -78,14 +77,14 @@
                             }
                             if(mysqli_query($conn,$query)){
                                 $control = true;
-                                echo "<div bestPanel column text-center p-5 m-5> <h2 h6 mb-1 font-weight-normal pt-6> Successfully registered! </h1></div> <div bestPanel column text-center p-5 m-5> <a href=\"homePage.php?idBrewery=". $idBrewery ."\"> Go back to Home page </a></div>";
+                                echo "<div class=\"bestPanel column text-center m-2\"> <h2 class=\"mb-1 font-weight-normal\"> Successfully registered! </h1></div> <div bestPanel column text-center p-5 m-5> <a href=\"homePage.php?idBrewery=". $idBrewery ."\"> Go back to Home page </a></div>";
                             }
                             else{
                                 echo "<script> alert(\"Somethings gone wrong during registration\")</script>";
                             }
                         }
                         else{
-                            echo "<div bestPanel column text-center p-5 m-5> <h6 h6 mb-1 font-weight-normal pt-6> This beer has already participated in a competition! </h1></div>";
+                            echo "<div class=\"bestPanel column text-center m-2\"> <h6 class=\" mb-1 font-weight-normal\"> This beer has already participated in a competition! </h1></div>";
                         }
                     }
                 ?>

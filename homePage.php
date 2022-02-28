@@ -60,15 +60,16 @@
                       echo "<tr>";
                       echo "<td>" . $row['name'] . "</td>";
                       echo "<td>" . $row['date'] . "</td>";
-                      echo "<td><a href=\"graduatory.php?idCompetition=". $row['id'] ."\"><img src=\"podium.png\"></a>";
                       $deadline = new DateTime($row['deadline']);
                       $thisDate = new DateTime();
                       if($deadline < $thisDate){
+                        echo "<td><a href=\"graduatory.php?idCompetition=". $row['id'] ."\"><img src=\"podium.png\"></a>";
                         echo "<img src=\"registration_red.png\"></td>";
                       }else{
                         $vars = array('idCompetition' => $row['id'], 'idBrewery' => $idBrewery);
                         $querystring = http_build_query($vars);
                         $url = "registration.php?" . $querystring;
+                        echo "<td><a><img src=\"podium.png\"></a>";
                         echo "<a href=". $url ."><img src=\"registration.png\"></a></td>";
                       }
                       echo "</tr>";
